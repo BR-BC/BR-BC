@@ -33,8 +33,12 @@
 
         .video-pair {
             display: flex;
-            gap: 20px;
-            min-width: 100%;
+            flex-direction: column; /* 改为纵向堆叠两个视频 */
+            width: 23%; /* 每行约可放4个 */
+            background: #f5f5f5;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
         }
 
         .video-item {
