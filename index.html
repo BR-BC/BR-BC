@@ -181,7 +181,7 @@
                                 <a href="FOURTH AUTHOR PERSONAL LINK" target="_blank">Qian Lin</a><sup>1，2</sup>，
                             </span>
                             <span class="author-block">
-                                <a href="FIFTH AUTHOR PERSONAL LINK" target="_blank">Zhi Wang</a><sup>1</sup>，
+                                <a href="FIFTH AUTHOR PERSONAL LINK" target="_blank">Zhi Wang</a><sup>1，*</sup>，
                             </span>
                             <span class="author-block">
                                 <a href="SIXTH AUTHOR PERSONAL LINK" target="_blank">Peng Zhang</a><sup>1，*</sup>,
@@ -254,8 +254,7 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-                            Behavioral Cloning (BC) has shown strong performance in robot manipulation tasks by leveraging the capacity of deep neural networks. However, its reliability degrades in real-world environments with varying lighting conditions, where vision-based policies are prone to overfitting and sensor noise. In this letter, we propose a lighting-robust BC framework by integrating Bayesian Deep Learning (BDL) into the visual encoder. Our method employs variational inference to train the visual backbone using the evidence lower bound (ELBO), combining a standard BC loss with a KL-based regularization term that encourages better generalization and uncertainty estimation. A one-sample Monte Carlo approximation is used for computational efficiency. We evaluate our approach on four simulated Robomimic tasks, where it consistently outperforms standard BC baselines. While the simulated environments do not include lighting variation, our method achieves improved sample efficiency, as evidenced by higher success rates and shorter rollout lengths. In real-world experiments conducted under seven distinct lighting conditions - ranging from dim to high-intensity illumination - our method demonstrates significantly enhanced robustness, maintaining strong performance across all conditions. Code and additional results are available at \url{https://github.com/dzy666fly/BBRBC}.
-                        </p>
+                            Behavioral Cloning (BC) has shown strong performance in robot manipulation tasks by leveraging the capacity of deep neural networks. However, its reliability degrades in real-world environments with varying lighting conditions, where vision-based policies are prone to overfitting and sensor noise. In this letter, we propose a lighting-robust BC framework by integrating Bayesian Deep Learning (BDL) into the visual encoder. Our method employs variational inference to train the visual backbone using the evidence lower bound (ELBO), combining a standard BC loss with a KL-based regularization term that encourages better generalization and uncertainty estimation. A one-sample Monte Carlo approximation is used for computational efficiency. We evaluate our approach on four simulated Robomimic tasks, where it consistently outperforms standard BC baselines. While the simulated environments do not include lighting variation, our method achieves improved sample efficiency, as evidenced by higher success rates and shorter rollout lengths. In real-world experiments conducted under seven distinct lighting conditions - ranging from dim to high-intensity illumination - our method demonstrates significantly enhanced robustness, maintaining strong performance across all conditions. Code and additional results are available at https://br-bc.github.io/BR-BC.
                     </div>
                 </div>
             </div>
