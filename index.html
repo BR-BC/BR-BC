@@ -599,7 +599,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const carouselRow1 = document.getElementById('carouselRow1');
-	    const carouselRow2 = document.getElementById('carouselRow2');
             const videoPairs = document.querySelectorAll('.video-pair');
             let currentPosition = 0;
             const pairWidth = videoPairs[0].offsetWidth + 20; // +20 for gap
@@ -618,7 +617,6 @@
 
                 // Apply the transform
                 carouselRow1.style.transform = `translateX(-${currentPosition * pairWidth}px)`;
-		carouselRow2.style.transform = `translateX(-${currentPosition * pairWidth}px)`;
             }
 
             // Auto-advance (optional)
@@ -636,7 +634,42 @@
     </script>
 
 
-   
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+	    const carouselRow2 = document.getElementById('carouselRow2');
+            const videoPairs = document.querySelectorAll('.video-pair');
+            let currentPosition = 0;
+            const pairWidth = videoPairs[0].offsetWidth + 20; // +20 for gap
+
+            window.moveRow = function (direction) {
+                const maxPosition = videoPairs.length - 1;
+
+                currentPosition += direction;
+
+                // Handle wrap around or limit position
+                if (currentPosition < 0) {
+                    currentPosition = maxPosition;
+                } else if (currentPosition > maxPosition) {
+                    currentPosition = 0;
+                }
+
+                // Apply the transform
+		carouselRow2.style.transform = `translateX(-${currentPosition * pairWidth}px)`;
+            }
+
+            // Auto-advance (optional)
+            // let autoAdvanceInterval = setInterval(() => moveRow(1), 3000);
+
+            // Pause auto-advance on hover (optional)
+            // document.querySelector('.carousel-row-container').addEventListener('mouseenter', () => {
+            //     clearInterval(autoAdvanceInterval);
+            // });
+
+            // document.querySelector('.carousel-row-container').addEventListener('mouseleave', () => {
+            //     autoAdvanceInterval = setInterval(() => moveRow(1), 3000);
+            // });
+        });
+    </script>
 
     <!--BibTex citation -->
     <section class="section" id="BibTeX">
