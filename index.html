@@ -598,7 +598,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const carouselRow = document.getElementById('carouselRow');
+            const carouselRow1 = document.getElementById('carouselRow1');
+	    const carouselRow2 = document.getElementById('carouselRow2');
             const videoPairs = document.querySelectorAll('.video-pair');
             let currentPosition = 0;
             const pairWidth = videoPairs[0].offsetWidth + 20; // +20 for gap
@@ -616,7 +617,8 @@
                 }
 
                 // Apply the transform
-                carouselRow.style.transform = `translateX(-${currentPosition * pairWidth}px)`;
+                carouselRow1.style.transform = `translateX(-${currentPosition * pairWidth}px)`;
+		carouselRow2.style.transform = `translateX(-${currentPosition * pairWidth}px)`;
             }
 
             // Auto-advance (optional)
