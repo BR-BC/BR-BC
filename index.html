@@ -119,44 +119,7 @@
         }
     </style>
 	
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>视频展示容器</title>
-    <style>
-        .video-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px;
-            background-color: #f2f2f2;
-        }
 
-        .video-item {
-            width: calc(33.33% - 20px); /* 每行3个 */
-            background: white;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .video-item video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .video-item p {
-            text-align: center;
-            margin: 10px;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-        }
-    </style>
-</head>
-<body>
     
     <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
     <!-- Replace the content tag with appropriate information -->
@@ -505,6 +468,133 @@
             <button class="carousel-button right" onclick="moveRow(1)">&#10095;</button>
         </div>
     </div>
+	
+ <div class="dual-carousel-container">
+        <!-- Carousel Row -->
+        <div class="carousel-row-container">
+            <button class="carousel-button left" onclick="moveRow(-1)">&#10094;</button>
+            <div class="carousel-row" id="carouselRow">
+                <!-- Each "video-pair" represents a pair of videos that slide together -->
+                <div class="video-pair">
+                <!-- 20 lux -->
+                    <div class="video-item">
+                        <video controls muted loop height="auto" width="100%">
+                            <source src="static/videos/Can/20/br_pb_demo_47_v5.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p>BC, L1 (0.02k lux)</p>
+                    </div>
+                    <div class="video-item">
+                        <video controls muted loop height="auto" width="100%">
+                            <source src="static/videos/brbc_lf_20.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p>BRBC, L1 (0.02k lux)</p>
+                    </div>
+                </div>
+                <div class="video-pair">
+                <!-- 200 lux -->
+                    <div class="video-item">
+                        <video controls muted loop height="auto" width="100%">
+                            <source src="static/videos/bc_lf_200.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p>BC, L2 (0.2k lux)</p>
+                    </div>
+                    <div class="video-item">
+                        <video controls muted loop height="auto" width="100%">
+                            <source src="static/videos/brbc_lf_200.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p>BRBC, L2 (0.2k lux)</p>
+                    </div>
+                </div>
+                <div class="video-pair">
+                <!-- 3000 lux -->
+                    <div class="video-item">
+                        <video controls muted loop height="auto" width="100%">
+                            <source src="static/videos/bc_lf_3k.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p>BC, L3 (3k lux)</p>
+                    </div>
+                    <div class="video-item">
+                        <video controls muted loop height="auto" width="100%">
+                            <source src="static/videos/brbc_lf_3k.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p>BRBC, L3 (3k lux)</p>
+                    </div>
+                </div>
+                <div class="video-pair">
+                    <div class="video-item">
+                        <video controls muted loop height="auto" width="100%">
+                            <source src="static/videos/bc_lf_6k.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p>BC, L4 (6k lux)</p>
+                    </div>
+                    <div class="video-item">
+                        <video controls muted loop height="auto" width="100%">
+                            <source src="static/videos/brbc_lf_6k.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p>BRBC, L4 (6k lux)</p>
+                    </div>
+                </div>
+                <div class="video-pair">
+                    <div class="video-item">
+                        <video controls muted loop height="auto" width="100%">
+                            <source src="static/videos/bc_lf_12_f.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p>BC, L5 (12k lux)</p>
+                    </div>
+                    <div class="video-item">
+                        <video controls muted loop height="auto" width="100%">
+                            <source src="static/videos/brbc_lf_12_f.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p>BRBC, L5 (12k lux)</p>
+                    </div>
+                </div>
+                <div class="video-pair">
+                    <div class="video-item">
+                        <video controls muted loop height="auto" width="100%">
+                            <source src="static/videos/bc_lf_12_f.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p>BC, L6 (24k lux)</p>
+                    </div>
+                    <div class="video-item">
+                        <video controls muted loop height="auto" width="100%">
+                            <source src="static/videos/brbc_lf_12_f.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p>BRBC, L6 (24k lux)</p>
+                    </div>
+                </div>
+				<div class="video-pair">
+                    <div class="video-item">
+                        <video controls muted loop height="auto" width="100%">
+                            <source src="static/videos/bc_lf_12_f.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p>BC, L7 (36k lux)</p>
+                    </div>
+                    <div class="video-item">
+                        <video controls muted loop height="auto" width="100%">
+                            <source src="static/videos/brbc_lf_12_f.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p>BRBC, L7 (36k lux)</p>
+                    </div>
+                </div>
+			</div>
+            <button class="carousel-button right" onclick="moveRow(1)">&#10095;</button>
+        </div>
+    </div>
+	
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
