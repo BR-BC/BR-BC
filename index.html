@@ -598,27 +598,44 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const carouselRow1 = document.getElementById('carouselRow1');
-	    const carouselRow2 = document.getElementById('carouselRow2');
-            const videoPairs = document.querySelectorAll('.video-pair');
+            //const carouselRow = document.getElementById('carouselRow');
+            //const videoPairs = document.querySelectorAll('.video-pair');
             let currentPosition = 0;
-            const pairWidth = videoPairs[0].offsetWidth + 20; // +20 for gap
+            //const pairWidth = videoPairs[0].offsetWidth + 20; // +20 for gap
 
-            window.moveRow = function (direction) {
-                const maxPosition = videoPairs.length - 1;
+            window.moveRow = function (direction, rowId ) {
+                //const maxPosition = videoPairs.length - 1;
+		const row = document.querySelector(`#${rowId} .carousel-row`);
+        	const container = document.getElementById(rowId);
+       		const videoPairs = row.querySelectorAll('.video-pair');
 
-                currentPosition += direction;
+
+
+                //currentPosition += direction;
 
                 // Handle wrap around or limit position
-                if (currentPosition < 0) {
-                    currentPosition = maxPosition;
-                } else if (currentPosition > maxPosition) {
-                    currentPosition = 0;
-                }
+                //if (currentPosition < 0) {
+                //    currentPosition = maxPosition;
+                //} else if (currentPosition > maxPosition) {
+                //    currentPosition = 0;
+                //}
 
                 // Apply the transform
-                carouselRow1.style.transform = translateX(-${currentPosition * pairWidth}px);
-		carouselRow2.style.transform = translateX(-${currentPosition * pairWidth}px);
+                //carouselRow.style.transform = translateX(-${currentPosition * pairWidth}px);
+		if (!carouselPositions[rowId]) {
+            		carouselPositions[rowId] = 0;
+        	}
+
+       		if (videoPairs.length === 0) return;
+
+        	const pairWidth = videoPairs[0].offsetWidth + 20; // 20 = gap
+        	const maxVisible = Math.floor(container.offsetWidth / pairWidth);
+        	const maxIndex = videoPairs.length - maxVisible;
+		carouselPositions[rowId] += direction;
+        	carouselPositions[rowId] = Math.max(0, Math.min(carouselPositions[rowId], maxIndex));
+
+	        const offset = -carouselPositions[rowId] * pairWidth;
+        	row.style.transform = `translateX(${offset}px)`;
             }
 
             // Auto-advance (optional)
