@@ -594,33 +594,36 @@
             <button class="carousel-button right" onclick="moveRow(1, 'carouselRow2')">&#10095;</button>
         </div>
     </div>
+
+	
 	
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            
-            let currentPosition = 0;
+            const carouselPositions = {};
+        
 
-            window.moveRow = function (direction, carouselRow1) {
-                const maxPosition = videoPairs.length - 1;
-		const carouselRow1 = document.getElementById('carouselRow1');
-                const videoPairs = document.querySelectorAll('.video-pair');
-		const pairWidth = pairs[0].offsetWidth + 20; // 20 是 gap
-                
+            window.moveRow = function (direction, rowId) {
+        	const row = document.querySelector(`#${rowId} .carousel-row`);
+        	const container = document.getElementById(rowId);
+        	const videoPairs = row.querySelectorAll('.video-pair');
 
-                if (!carouselPositions[carouselRow1]) {
-            		carouselPositions[carouselRow1] = 0;
+        	if (!carouselPositions[rowId]) {
+            	     carouselPositions[rowId] = 0;
         	}
 
+        	if (videoPairs.length === 0) return;
+
+        	const pairWidth = videoPairs[0].offsetWidth + 20; // 20 = gap
         	const maxVisible = Math.floor(container.offsetWidth / pairWidth);
-        	const maxIndex = pairs.length - maxVisible;
+        	const maxIndex = videoPairs.length - maxVisible;
 
-        	carouselPositions[carouselRow1] += direction;
-        	carouselPositions[carouselRow1] = Math.max(0, Math.min(carouselPositions[carouselRow1], maxIndex));
+        	carouselPositions[rowId] += direction;
+        	carouselPositions[rowId] = Math.max(0, Math.min(carouselPositions[rowId], maxIndex));
 
-        	const offset = -carouselPositions[carouselRow1] * pairWidth;
+        	const offset = -carouselPositions[rowId] * pairWidth;
         	row.style.transform = `translateX(${offset}px)`;
-            }
+    	   };
 
             // Auto-advance (optional)
             // let autoAdvanceInterval = setInterval(() => moveRow(1), 3000);
@@ -637,45 +640,7 @@
     </script>
 
 
-   <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            
-            let currentPosition = 0;
-
-            window.moveRow = function (direction, carouselRow2) {
-                const maxPosition = videoPairs.length - 1;
-		const carouselRow2 = document.getElementById('carouselRow2');
-                const videoPairs = document.querySelectorAll('.video-pair');
-		const pairWidth = pairs[0].offsetWidth + 20; // 20 是 gap
-                
-
-                if (!carouselPositions[carouselRow1]) {
-            		carouselPositions[carouselRow1] = 0;
-        	}
-
-        	const maxVisible = Math.floor(container.offsetWidth / pairWidth);
-        	const maxIndex = pairs.length - maxVisible;
-
-        	carouselPositions[carouselRow2] += direction;
-        	carouselPositions[carouselRow2] = Math.max(0, Math.min(carouselPositions[carouselRow2], maxIndex));
-
-        	const offset = -carouselPositions[carouselRow2] * pairWidth;
-        	row.style.transform = `translateX(${offset}px)`;
-            }
-
-            // Auto-advance (optional)
-            // let autoAdvanceInterval = setInterval(() => moveRow(1), 3000);
-
-            // Pause auto-advance on hover (optional)
-            // document.querySelector('.carousel-row-container').addEventListener('mouseenter', () => {
-            //     clearInterval(autoAdvanceInterval);
-            // });
-
-            // document.querySelector('.carousel-row-container').addEventListener('mouseleave', () => {
-            //     autoAdvanceInterval = setInterval(() => moveRow(1), 3000);
-            // });
-        });
-    </script>
+   
 
     <!--BibTex citation -->
     <section class="section" id="BibTeX">
