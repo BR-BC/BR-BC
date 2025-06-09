@@ -603,19 +603,31 @@
             let currentPosition = 0;
             const pairWidth = videoPairs[0].offsetWidth + 20; // +20 for gap
 
-            window.moveRow = function (direction) {
-                const maxPosition = videoPairs.length - 1;
-                currentPosition += direction;
+            // window.moveRow = function (direction) {
+            //     const maxPosition = videoPairs.length - 1;
+            //     currentPosition += direction;
 
-                // Handle wrap around or limit position
-                if (currentPosition < 0) {
-                    currentPosition = maxPosition;
-                } else if (currentPosition > maxPosition) {
-                    currentPosition = 0;
-                }
+            //     // Handle wrap around or limit position
+            //     if (currentPosition < 0) {
+            //         currentPosition = maxPosition;
+            //     } else if (currentPosition > maxPosition) {
+            //         currentPosition = 0;
+            //     }
 
-                // Apply the transform
-                carouselRow.style.transform = translateX(-${currentPosition * pairWidth}px);
+            //     // Apply the transform
+            //     carouselRow.style.transform = translateX(-${currentPosition * pairWidth}px);
+		<script>
+    			function moveRow(direction, rowId) {
+        			const row = document.getElementById(rowId);
+       		 		const pair = row.querySelector('.video-pair');
+        			const pairWidth = pair.offsetWidth + 20; // 20 for gap
+        			row.scrollBy({
+            				left: direction * pairWidth,
+            				behavior: 'smooth'
+        			});
+    }
+</script>
+
 
 
             }
