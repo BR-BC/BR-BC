@@ -626,36 +626,21 @@
 	
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const carouselRow = document.getElementById('carouselRow');
-            const videoPairs = document.querySelectorAll('.video-pair');
-            let currentPosition = 0;
-            const pairWidth = videoPairs[0].offsetWidth + 20; // +20 for gap
+    function moveRow(direction, rowId) {
+        const row = document.getElementById(rowId);
+        if (!row) return;
 
-            // window.moveRow = function (direction) {
-            //     const maxPosition = videoPairs.length - 1;
-            //     currentPosition += direction;
+        const pair = row.querySelector('.video-pair');
+        if (!pair) return;
 
-            //     // Handle wrap around or limit position
-            //     if (currentPosition < 0) {
-            //         currentPosition = maxPosition;
-            //     } else if (currentPosition > maxPosition) {
-            //         currentPosition = 0;
-            //     }
-
-            //     // Apply the transform
-            //     carouselRow.style.transform = translateX(-${currentPosition * pairWidth}px);
-		<script>
-    			function moveRow(direction, rowId) {
-        			const row = document.getElementById(rowId);
-       		 		const pair = row.querySelector('.video-pair');
-        			const pairWidth = pair.offsetWidth + 20; // 20 for gap
-        			row.scrollBy({
-            				left: direction * pairWidth,
-            				behavior: 'smooth'
-        			});
+        const pairWidth = pair.offsetWidth + 20; // 20 为间距
+        row.scrollBy({
+            left: direction * pairWidth,
+            behavior: 'smooth'
+        });
     }
 </script>
+
 
 
 
