@@ -12,16 +12,19 @@
         }
 
         .dual-carousel-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            padding: 0 10px;
         }
 
         .carousel-row-container {
             position: relative;
             width: 100%;
             overflow: hidden;
-            margin-bottom: 30px;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            padding: 20px 0;
         }
 
 	.carousel-row-container {
@@ -32,24 +35,35 @@
 	}
 
 	.carousel-row {
-    		display: flex;
-    		overflow-x: auto; /* ✅ 必须设置滚动 */
-    		scroll-behavior: smooth;
-    		gap: 20px;
+    		display: block;
+    		overflow: hidden; /* 隐藏横向滚动条与滚动行为 */
+    		gap: 0;
+    		scroll-behavior: auto;
+    		/* scroll-snap-type 取消 */
 	}
 
 	.video-pair {
+    		display: none; /* 只展示激活的那一组 */
+    		gap: 0; /* 两视频无间距 */
+	}
+
+	.video-pair.active {
     		display: flex;
-    		flex: 0 0 50%; /* ✅ 每个 pair 占满一整屏宽度以产生滚动 */
-    		gap: 20px;
-    		scroll-snap-align: start; /* ✅ 可选：对齐到边缘 */
+    		justify-content: center;
+    		align-items: flex-start;
+    		gap: 2px;
+    		padding: 0 8px;
 	}
 
 	.video-item {
     		flex: 1;
-    		background: #f5f5f5;
-    		border-radius: 6px;
+    		background: #fff;
+    		border-radius: 12px;
+    		box-shadow: 0 6px 16px rgba(0,0,0,0.08);
     		overflow: hidden;
+    		display: flex;
+    		flex-direction: column;
+    		align-items: center;
 	}
 
 
@@ -80,55 +94,50 @@
                 transform: translateY(-5px);
             }
 
-            .video-item video {
-                
-                width: 50%;     /* 宽度缩小为原来的一半 */
-                height: auto;   /* 高度自适应 */
-                *transform-origin: top center; /* 缩放中心点 \*/
-                display: block;
-                margin: 0 auto; /* 居中显示 */
-                border-radius: 6px 6px 0 0;
-            }
+            		.video-item video { width: 35%; height: auto; display: block; }
 
-            .video-item p {
-                padding: 10px;
-                margin: 0;
-                text-align: center;
-                font-family: Arial, sans-serif;
-                color: #333;
-            }
+            /* 移除侧向对齐，使用统一居中布局 */
 
-        .carousel-button {
+                        .video-item p {
+                 order: -1; /* 移到视频上方 */
+                 margin: 0 auto 6px;
+                 padding: 0 0 6px;
+                 font-size: 0.92rem;
+                 text-align: center;
+                 color: #444;
+                 background: transparent;
+                 width: 35%;
+                 border-bottom: 1px solid #eee;
+                 border-top: 0;
+             }
+
+                    .carousel-button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
+            background: rgba(255,255,255,0.95);
+            color: #222;
             border: none;
-            padding: 15px;
-            cursor: pointer;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             font-size: 18px;
-            width: 50px;
-            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 10;
-            transition: all 0.3s ease;
+            box-shadow: 0 5px 14px rgba(0,0,0,0.14);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 20;
+        }
+        .carousel-button:hover {
+            background: #111;
+            color: #fff;
+            transform: translateY(-50%) scale(1.08);
         }
 
-            .carousel-button:hover {
-                background: rgba(0, 0, 0, 0.8);
-            }
-
-            .carousel-button.left {
-                left: 10px;
-            }
-
-            .carousel-button.right {
-                right: 10px;
-            }
+            .carousel-button.left { left: 10px; }
+            .carousel-button.right { right: 10px; }
 
         @media (max-width: 768px) {
             .video-item {
@@ -137,6 +146,13 @@
 
             .video-pair {
                 flex-direction: column;
+            }
+
+            /* 移动端：视频与文字统一居中 */
+            .video-pair .video-item video,
+            .video-pair .video-item p {
+                margin-left: auto !important;
+                margin-right: auto !important;
             }
 
             .carousel-button {
@@ -343,17 +359,8 @@
                         <h2 class="subtitle has-text-centered">
                             Q2： What is the effect of the Monte Carlo sampling count and the associated KL regularization coefficient (β) on performance and sample efficiency?
                         </h2>
-                        <div class="image-row">
-            				<div class="image-container">
-                			<img src="static/images/mc/mc_mlp.png" alt="MLP Monte Carlo Results" />
-                			<p class="image-caption">MLP Architecture Results</p>
-           					</div>
-            
-            				<div class="image-container">
-                			<img src="static/images/mc/mc_rnn.png" alt="RNN Monte Carlo Results" />
-                			<p class="image-caption">RNN Architecture Results</p>
-           			 	</div>
-       	 			</div>
+                        <img src="static/images/table2.png" alt="MY ALT TEXT" />
+                        <img src="static/images/table3.png" alt="MY ALT TEXT" />
 
                     </div>
                 </div>
@@ -387,7 +394,10 @@
         <!-- Carousel Row -->
         <div class="carousel-row-container" id="carouselRow1">
             
-            <div class="carousel-row" id="carouselRow1">
+            <button class="carousel-button left" onclick="moveRow(-1, 'carouselRow1Inner')">&#8249;</button>
+            <button class="carousel-button right" onclick="moveRow(1, 'carouselRow1Inner')">&#8250;</button>
+            
+            <div class="carousel-row" id="carouselRow1Inner">
                 <!-- Each "video-pair" represents a pair of videos that slide together -->
                 <div class="video-pair">
                 <!-- 20 lux -->
@@ -513,7 +523,10 @@
         <!-- Carousel Row -->
         <div class="carousel-row-container" id="carouselRow2">
             
-            <div class="carousel-row" id="carouselRow2">
+            <button class="carousel-button left" onclick="moveRow(-1, 'carouselRow2Inner')">&#8249;</button>
+            <button class="carousel-button right" onclick="moveRow(1, 'carouselRow2Inner')">&#8250;</button>
+            
+            <div class="carousel-row" id="carouselRow2Inner">
                 <!-- Each "video-pair" represents a pair of videos that slide together -->
                 <div class="video-pair">
                 <!-- 20 lux -->
@@ -639,7 +652,10 @@
         <!-- Carousel Row -->
         <div class="carousel-row-container" id="carouselRow3">
             
-            <div class="carousel-row" id="carouselRow3">
+            <button class="carousel-button left" onclick="moveRow(-1, 'carouselRow3Inner')">&#8249;</button>
+            <button class="carousel-button right" onclick="moveRow(1, 'carouselRow3Inner')">&#8250;</button>
+            
+            <div class="carousel-row" id="carouselRow3Inner">
                 <!-- Each "video-pair" represents a pair of videos that slide together -->
                 <div class="video-pair">
                 <!-- 20 lux -->
@@ -767,15 +783,46 @@
         const row = document.getElementById(rowId);
         if (!row) return;
 
-        const pair = row.querySelector('.video-pair');
-        if (!pair) return;
+        const pairs = Array.from(row.querySelectorAll('.video-pair'));
+        if (pairs.length === 0) return;
 
-        const pairWidth = pair.offsetWidth + 20; // 20 为间距
-        row.scrollBy({
-            left: direction * pairWidth,
-            behavior: 'smooth'
+        const currentIndex = Number(row.dataset.currentIndex || 0);
+        let nextIndex = currentIndex + direction;
+        if (nextIndex < 0) nextIndex = pairs.length - 1; // 循环切换
+        if (nextIndex >= pairs.length) nextIndex = 0;
+
+        pairs.forEach((p, i) => {
+            if (i === nextIndex) {
+                p.classList.add('active');
+            } else {
+                p.classList.remove('active');
+            }
         });
+        row.dataset.currentIndex = String(nextIndex);
     }
+
+    // 初始化：每个 carousel 行只显示第一组
+    document.addEventListener('DOMContentLoaded', function() {
+        const rows = [
+            'carouselRow1Inner',
+            'carouselRow2Inner',
+            'carouselRow3Inner'
+        ];
+        rows.forEach((rowId) => {
+            const row = document.getElementById(rowId);
+            if (!row) return;
+            const pairs = Array.from(row.querySelectorAll('.video-pair'));
+            if (pairs.length === 0) return;
+            pairs.forEach((p, i) => {
+                if (i === 0) {
+                    p.classList.add('active');
+                } else {
+                    p.classList.remove('active');
+                }
+            });
+            row.dataset.currentIndex = '0';
+        });
+    });
 </script>
 
 
@@ -799,7 +846,7 @@
     <!--End BibTex citation -->
    -->
 
-<h2 class="common-title">Download Code</h2>
+<h2 class="common-title">Download</h2>
 <section class="hero is-small">
     <div class="hero-body">
         <div class="container is-max-desktop">
@@ -840,6 +887,3 @@
     <!-- End of Statcounter Code -->
 
 </body>
-
-
-
