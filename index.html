@@ -17,6 +17,14 @@
             padding: 0 10px;
         }
 
+        .condition-text {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
         .carousel-row-container {
             position: relative;
             width: 100%;
@@ -394,6 +402,7 @@
 
     <div class="dual-carousel-container">
         <!-- Carousel Row -->
+        <div class="condition-text" id="conditionRow1"></div>
         <div class="carousel-row-container" id="carouselRow1">
             
             <button class="carousel-button left" onclick="moveRow(-1, 'carouselRow1Inner')">&#8249;</button>
@@ -479,8 +488,9 @@
         </div>
     </div>
 	
-	<div class="dual-carousel-container">
+    <div class="dual-carousel-container">
         <!-- Carousel Row -->
+        <div class="condition-text" id="conditionRow2"></div>
         <div class="carousel-row-container" id="carouselRow2">
             
             <button class="carousel-button left" onclick="moveRow(-1, 'carouselRow2Inner')">&#8249;</button>
@@ -602,8 +612,9 @@
         </div>
     </div>
 	
-	<div class="dual-carousel-container">
+    <div class="dual-carousel-container">
         <!-- Carousel Row -->
+        <div class="condition-text" id="conditionRow3"></div>
         <div class="carousel-row-container" id="carouselRow3">
             
             <button class="carousel-button left" onclick="moveRow(-1, 'carouselRow3Inner')">&#8249;</button>
@@ -733,6 +744,32 @@
 	
 	
     <script>
+    const defaultConditionMap = ['0.02k lux', '0.2k lux', '3k lux', '6k lux', '12k lux', '24k lux', '36k lux'];
+
+    function updateCondition(rowId, index) {
+        const row = document.getElementById(rowId);
+        if (!row) return;
+        const rowNumber = rowId.replace('carouselRow', '').replace('Inner', '');
+        const conditionDiv = document.getElementById('conditionRow' + rowNumber);
+        if (!conditionDiv) return;
+
+        const pairs = Array.from(row.querySelectorAll('.video-pair'));
+        if (pairs.length === 0) return;
+
+        const currentPair = pairs[index];
+        if (!currentPair) return;
+
+        // Try data-condition first; else fallback to default by index; else parse from caption parentheses
+        const dataCond = currentPair.getAttribute('data-condition') || '';
+        let condition = dataCond || defaultConditionMap[index] || '';
+        if (!condition) {
+            const firstLabel = currentPair.querySelector('p')?.textContent || '';
+            const m = firstLabel.match(/\((.*?)\)/);
+            condition = m ? m[1] : '';
+        }
+        conditionDiv.textContent = condition;
+    }
+
     function moveRow(direction, rowId) {
         const row = document.getElementById(rowId);
         if (!row) return;
@@ -753,6 +790,7 @@
             }
         });
         row.dataset.currentIndex = String(nextIndex);
+        updateCondition(rowId, nextIndex);
     }
 
     // 初始化：每个 carousel 行只显示第一组
@@ -775,6 +813,7 @@
                 }
             });
             row.dataset.currentIndex = '0';
+            updateCondition(rowId, 0);
         });
     });
 </script>
