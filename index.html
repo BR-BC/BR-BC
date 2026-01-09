@@ -314,8 +314,9 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-			Behavioral Cloning (BC) has demonstrated strong performance in robot manipulation by leveraging the expres sive capacity of deep neural networks to approximate complex visuomotor mappings. However, its reliability often degrades under real-world visual perturbations such as lighting variation, where vision-based policies become sensitive to overfitting and sensor noise. We propose a lighting-robust BC framework that integrates Bayesian Deep Learning (BDL) into the visual encoder to improve generalization under visual variability. By introducing a distribution over network weights and optimizing the Evidence Lower Bound (ELBO), our method encourages more stable and uncertainty-aware feature learning through Kullback–Leibler (KL) divergence–based regularization. In simulation tasks, our method achieves higher success rates and shorter rollout lengths than baselines, while also demonstrating strong sample efficiency with just a single Monte Carlo sample, despite the absence of lighting variation. In real-world experiments across seven lighting conditions—including both seen and unseen settings, ranging from dim to overexposed—our method maintains robust per formance and significantly outperforms BC baselines. Code and additional results are available at https://br-bc.github.io/BR-BC/.	
-			</p>
+			</p>			Behavioral Cloning (BC) has demonstrated strong performance in robot manipulation by leveraging deep neural networks to learn visuomotor mappings. However, its reliability often degrades under illumination-induced distribution shifts, where vision-based policies become sensitive to overfitting and visual noise. We propose a lighting-robust BC framework that integrates Bayesian Deep Learning (BDL) into the visual encoder to enable uncertainty-aware representation learning under illumination variability. By modeling a posterior distribution over convolutional weights and optimizing the Evidence Lower Bound (ELBO), our method regularizes feature learning through a Kullback--Leibler (KL) divergence term.
+In simulation, our approach achieves higher success rates and shorter rollout lengths than deterministic baselines, while maintaining strong sample efficiency with a single Monte Carlo sample. In real-world experiments across seven illumination regimes, including distribution-shifted conditions, our method consistently outperforms BC baselines and maintains stable performance under severe lighting changes. These results demonstrate that Bayesian regularization induces task-aligned visual representations that improve robustness and generalization. Code and additional results are available at https://br-bc.github.io/BR-BC/.	
+
 		    </div>
                 </div>
             </div>
@@ -803,6 +804,7 @@
     <!-- End of Statcounter Code -->
 
 </body>
+
 
 
 
